@@ -410,6 +410,24 @@ def deactivate_studio(studio_id):
 
    return jsonify("Studio Deactivated"), 200
 
+@app.route('/director/<director_id>', methods = ['GET'])
+def get_director(director_id):
+   director_record = db.session.query(Directors).filter(Directors.director_id==director_id).first()
+
+   return jsonify(director_schema.dump(director_record)), 200
+
+@app.route('/studio/<studio_id>', methods = ['GET'])
+def get_studio(studio_id):
+   studio_record = db.session.query(Studios).filter(Studios.studio_id==studio_id).first()
+
+   return jsonify(studio_schema.dump(studio_record)), 200
+
+@app.route('/movie/<movie_id>', methods = ['GET'])
+def get_movie(movie_id):
+   movie_record = db.session.query(Movies).filter(Movies.movie_id==movie_id).first()
+
+   return jsonify(movie_schema.dump(movie_record)), 200
+
 if __name__ == '__main__':
    db.create_all()
    app.run()
