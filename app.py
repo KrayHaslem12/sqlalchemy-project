@@ -6,11 +6,17 @@ from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy import or_
 import uuid
 
+import os
+
 app = Flask(__name__)
 
-database_host = "127.0.0.1:5432"
+database_host_url = os.environ.get('DATABASE_URL')
+database_username = os.environ.get('kh_db_username')
+database_password = os.environ.get('kh_db_password')
+print(database_username)
+print(database_password)
 database_name = "movies"
-app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{database_host}/{database_name}'
+app.config['SQLALCHEMY_DATABASE_URI'] = database_host_url
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
