@@ -11,11 +11,8 @@ import os
 app = Flask(__name__)
 
 database_host_url = os.environ.get('DATABASE_URL')
-database_username = os.environ.get('kh_db_username')
-database_password = os.environ.get('kh_db_password')
-print(database_username)
-print(database_password)
-database_name = "movies"
+database_host_url = database_host_url.replace('postgres','postgresql')
+
 app.config['SQLALCHEMY_DATABASE_URI'] = database_host_url
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
