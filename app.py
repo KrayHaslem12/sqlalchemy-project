@@ -11,9 +11,9 @@ import os
 app = Flask(__name__)
 
 database_host_url = os.environ.get('DATABASE_URL')
-database_host_url = database_host_url.replace('postgres','postgresql')
+database_host_uri = database_host_url.replace('postgres','postgresql')
 
-app.config['SQLALCHEMY_DATABASE_URI'] = database_host_url
+app.config['SQLALCHEMY_DATABASE_URI'] = database_host_uri
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
