@@ -431,6 +431,8 @@ def get_movie(movie_id):
 
    return jsonify(movie_schema.dump(movie_record)), 200
 
+
+db.create_all()
 if __name__ == '__main__':
    db.create_all()
    app.run()
